@@ -14,6 +14,7 @@ We use pixi to install all dependencies quickly and effortlessly. You can find t
 2. Create an account / log in with google
 3. Open the email you recieve and confirm your email address  
 4. Go back to the website, and click on "Create API key"
-5. In the repository, create a ".env" file in /src, so the resulting path will be "/src/.env". This file is used to store variables securely. 
-6. Open .env, and add this line: "GROQ_API_KEY=\<Your_api_key_from_the_website\>"
+5. In the repository, create a `.env` file in /src, so the resulting path will be `/src/.env`. This file is used to store variables securely. 
+6. Open `.env`, and add this line: `GROQ_API_KEY=<Your_api_key_from_the_website>`
+7. Run `pixi run start`
 

@@ -18,10 +18,10 @@ from langchain_community.utilities import WikipediaAPIWrapper
 from langgraph.prebuilt import create_react_agent
 from langchain_core.tools import tool
 
+# Chatbot initialization
+model = init_chat_model("deepseek-r1-distill-qwen-32b", model_provider="groq")
 
-model = init_chat_model("qwen-qwq-32b", model_provider="groq")
-
-
+# Tool used to extract information from wikipedia
 wikipedia = WikipediaQueryRun(api_wrapper=WikipediaAPIWrapper())  # type: ignore - This is pylance being just silly
 
 # @tool
@@ -32,7 +32,10 @@ wikipedia = WikipediaQueryRun(api_wrapper=WikipediaAPIWrapper())  # type: ignore
 
 # tools = [check_weather]
 
+# List of all tools available to the LLM
 tools = [wikipedia]
+
+# Environment where the model interacts with the tools
 graph = create_react_agent(model, tools=tools)
 
 inputs = {"messages": [("user", "What is Hunter x Hunter?")]}

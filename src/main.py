@@ -2,7 +2,6 @@ import getpass
 import os
 
 from dotenv import load_dotenv
-from IPython.display import Image, display
 from langchain.chat_models import init_chat_model
 from langchain_community.tools import WikipediaQueryRun
 from langchain_community.utilities import WikipediaAPIWrapper

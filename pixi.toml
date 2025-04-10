@@ -2,7 +2,7 @@
 authors = ["Wiktor Jurkiewicz <watjurk@gmail.com>, Matúš Hába <matus.haba@gmail.com"]
 channels = ["conda-forge"]
 name = "workshop-equinix-2025-intro-to-langchain"
-platforms = ["osx-arm64"]
+platforms = ["win-64", "linux-64", "osx-64", "osx-arm64"]
 version = "0.1.0"
 
 [tasks]
@@ -10,3 +10,6 @@ start = "python src/main.py"
 
 [dependencies]
 python = "3.12.*"
+langchain = ">=0.3.23,<0.4"
+python-dotenv = ">=1.1.0,<2"
+langchain-groq = ">=0.3.2,<0.4"

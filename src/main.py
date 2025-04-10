@@ -1,21 +1,17 @@
 import getpass
 import os
 
+from dotenv import load_dotenv
 from langchain.chat_models import init_chat_model
 from langchain_community.tools import WikipediaQueryRun
 from langchain_community.utilities import WikipediaAPIWrapper
-from langgraph.prebuilt import create_react_agent
 from langgraph.checkpoint.memory import InMemorySaver
+from langgraph.prebuilt import create_react_agent
+
 from lib import init_stdout_log_saver, prompt_graph
 
+load_dotenv()
 
-try:
-    # load environment variables from .env file (requires `python-dotenv`)
-    from dotenv import load_dotenv
-
-    load_dotenv()
-except ImportError:
-    pass
 
 if not os.environ.get("GROQ_API_KEY"):
     os.environ["GROQ_API_KEY"] = getpass.getpass("Enter API key for Groq: ")

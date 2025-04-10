@@ -2,7 +2,7 @@
 authors = ["Wiktor Jurkiewicz <watjurk@gmail.com>"]
 channels = ["conda-forge"]
 name = "workshop-equinix-2025-intro-to-langchain"
-platforms = ["osx-arm64"]
+platforms = ["win-64", "linux-64", "osx-64", "osx-arm64"]
 version = "0.1.0"
 
 [tasks]

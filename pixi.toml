@@ -1,0 +1,12 @@
+[workspace]
+authors = ["Wiktor Jurkiewicz <watjurk@gmail.com>"]
+channels = ["conda-forge"]
+name = "workshop-equinix-2025-intro-to-langchain"
+platforms = ["osx-arm64"]
+version = "0.1.0"
+
+[tasks]
+start = "python src/main.py"
+
+[dependencies]
+python = "3.12.*"

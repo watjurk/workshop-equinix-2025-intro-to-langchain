@@ -1,6 +1,17 @@
-from langgraph.graph.graph import CompiledGraph
-from langchain_core.runnables import RunnableConfig
 import sys
+
+from langchain_core.runnables import RunnableConfig
+from langgraph.graph.graph import CompiledGraph
+
+
+def save_graph_as_png(graph: CompiledGraph):
+    png_bytes = graph.get_graph().draw_mermaid_png()
+    with open("graph.png", "wb") as f:
+        f.write(png_bytes)
+
+
+def show_graph(graph: CompiledGraph):
+    print(graph.get_graph().draw_ascii())
 
 
 def init_stdout_log_saver(thread_id: int):

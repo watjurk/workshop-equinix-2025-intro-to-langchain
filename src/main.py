@@ -6,7 +6,8 @@ from langchain_community.tools import WikipediaQueryRun
 from langchain_community.utilities import WikipediaAPIWrapper
 from langgraph.prebuilt import create_react_agent
 from langgraph.checkpoint.memory import InMemorySaver
-from lib import prompt_graph
+from lib import init_stdout_log_saver, prompt_graph
+
 
 try:
     # load environment variables from .env file (requires `python-dotenv`)
@@ -20,7 +21,7 @@ if not os.environ.get("GROQ_API_KEY"):
     os.environ["GROQ_API_KEY"] = getpass.getpass("Enter API key for Groq: ")
 
 
-model = init_chat_model("qwen-qwq-32b", model_provider="groq")
+model = init_chat_model("qwen-qwq-32b", model_provider="groq", temperature=0)
 
 
 wikipedia = WikipediaQueryRun(api_wrapper=WikipediaAPIWrapper())  # type: ignore - This is pylance being just silly
@@ -34,6 +35,7 @@ graph = create_react_agent(
 )
 
 thread_id = 1
+init_stdout_log_saver(thread_id)
 while True:
     prompt = input("Enter a prompt: ")
     if prompt == "exit":

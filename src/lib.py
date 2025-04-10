@@ -1,5 +1,25 @@
 from langgraph.graph.graph import CompiledGraph
 from langchain_core.runnables import RunnableConfig
+import sys
+
+
+def init_stdout_log_saver(thread_id: int):
+    log_file_name = f"logs/log_{thread_id}.txt"
+
+    class Logger(object):
+        def __init__(self):
+            self.terminal = sys.stdout
+            self.log = open(log_file_name, "a")
+
+        def write(self, message):
+            self.terminal.write(message)
+            self.log.write(message)
+
+        def flush(self):
+            self.terminal.flush()
+            self.log.flush()
+
+    sys.stdout = Logger()
 
 
 def prompt_graph(graph: CompiledGraph, thread_id: int, prompt: str):
